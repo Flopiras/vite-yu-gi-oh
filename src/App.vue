@@ -20,7 +20,7 @@ export default {
 <template>
   <div class="container">
     <header>
-      <h1 class="text-center my-3 text-success">Pokémon</h1>
+      <h1 class="text-center my-4 text-success">Pokémon</h1>
     </header>
     <main>
       <AppMain />

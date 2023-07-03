@@ -1,7 +1,8 @@
 <script>
 export default {
     props: {
-        number: Number,
+        generation: Number,
+        position: Number,
         name: String,
         type: String,
         url: String
@@ -11,11 +12,12 @@ export default {
 </script>
 
 <template>
-    <div class="character-card text-center">
-        <img class="img-fluid rounded-circle" :src="url" :alt="name">
-        <h3># {{ number }}</h3>
+    <div class="character-card text-center pb-1 mb-2">
+        <h4 class="pt-2">Generation: {{ generation }}</h4>
+        <img class="img-fluid rounded-circle my-3" :src="url" :alt="name">
+        <h4># {{ position }}</h4>
         <h3>{{ name }}</h3>
-        <h4>{{ type }}</h4>
+        <h5>{{ type }}</h5>
     </div>
 </template>
 
