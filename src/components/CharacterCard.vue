@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-    <div class="character-card text-center pb-1 mb-2">
+    <div class="character-card text-center ">
         <h4 class="pt-2">Generation: {{ generation }}</h4>
         <img class="img-fluid rounded-circle my-3" :src="url" :alt="name">
         <h4># {{ position }}</h4>
