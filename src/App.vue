@@ -38,6 +38,9 @@ export default {
     },
 
     fetchFilterType(option) {
+      if (option === '--') {
+        return this.getPokemons(endpoint)
+      }
       const filterEndpoint = `${endpoint}?eq[type1]=${option}`;
       this.getPokemons(filterEndpoint)
     }
@@ -54,7 +57,7 @@ export default {
   <div class="container">
     <header>
       <h1 class="text-center my-4 text-success">Pokémon</h1>
-      <SearchForm :options="types" @change-option="fetchFilterType" />
+      <SearchForm :options="types" @changeOption="fetchFilterType" />
     </header>
     <main>
       <AppMain />

@@ -8,7 +8,7 @@ export default {
     props: {
         options: Array
     },
-    emits: ['changeOption']
+    emits: ['changeOption'],
 }
 </script>
 
@@ -17,7 +17,7 @@ export default {
 
         <form>
             <select @change="$emit('changeOption', selectedOption)" v-model="selectedOption" class="form-select my-4">
-                <option selected>Select</option>
+                <option selected>--</option>
                 <option v-for="option in options">{{ option }}</option>
             </select>
         </form>
