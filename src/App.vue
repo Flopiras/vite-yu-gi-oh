@@ -6,20 +6,40 @@ import { store } from '../src/data/store';
 
 const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons';
 
+const typesEndpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons/types1';
+
 export default {
   components: { AppMain, SearchForm },
+  data() {
+    return {
+      types: [],
+    }
+  },
+  methods: {
+    getPokemons() {
+      store.isLoading = true;
+      axios.get(endpoint)
+        .then(res => {
+          store.pokemons = res.data.docs;
+        })
+        .catch(() => {
+          console.error('error')
+        })
+        .then(() => {
+          store.isLoading = false
+        })
+    },
+
+    getTypes() {
+
+      axios.get(typesEndpoint).then(res => {
+        this.types = res.data;
+      })
+    }
+  },
   created() {
-    store.isLoading = true;
-    axios.get(endpoint)
-      .then(res => {
-        store.pokemons = res.data.docs;
-      })
-      .catch(() => {
-        console.error('error')
-      })
-      .then(() => {
-        store.isLoading = false
-      })
+    this.getPokemons();
+    this.getTypes()
   },
 }
 
