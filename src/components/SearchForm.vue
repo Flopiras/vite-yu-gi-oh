@@ -4,6 +4,9 @@ export default {
         return {
 
         }
+    },
+    props: {
+        options: Array
     }
 }
 </script>
@@ -13,8 +16,8 @@ export default {
 
         <form>
             <select class="form-select my-4">
-                <option selected>Select type</option>
-                <option v-for="type in types">{{ type }}</option>
+                <option selected>Select</option>
+                <option v-for="option in options">{{ option }}</option>
             </select>
         </form>
     </div>

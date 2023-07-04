@@ -49,7 +49,7 @@ export default {
   <div class="container">
     <header>
       <h1 class="text-center my-4 text-success">Pokémon</h1>
-      <SearchForm />
+      <SearchForm :options="types" />
     </header>
     <main>
       <AppMain />
