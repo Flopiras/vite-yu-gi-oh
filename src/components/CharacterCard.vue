@@ -24,6 +24,8 @@ export default {
 <style lang="scss" scoped>
 .character-card {
     background-color: burlywood;
+    border-radius: 30px;
+    border: 2px solid orangered;
 }
 
 img {
