@@ -2,12 +2,13 @@
 export default {
     data() {
         return {
-
+            selectedOption: ''
         }
     },
     props: {
         options: Array
-    }
+    },
+    emits: ['changeOption']
 }
 </script>
 
@@ -15,7 +16,7 @@ export default {
     <div class="container">
 
         <form>
-            <select class="form-select my-4">
+            <select @change="$emit('changeOption', selectedOption)" v-model="selectedOption" class="form-select my-4">
                 <option selected>Select</option>
                 <option v-for="option in options">{{ option }}</option>
             </select>

@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    getPokemons() {
+    getPokemons(endpoint) {
       store.isLoading = true;
       axios.get(endpoint)
         .then(res => {
@@ -30,16 +30,21 @@ export default {
         })
     },
 
-    getTypes() {
+    getTypes(endpoint) {
 
-      axios.get(typesEndpoint).then(res => {
+      axios.get(endpoint).then(res => {
         this.types = res.data;
       })
+    },
+
+    fetchFilterType(option) {
+      const filterEndpoint = `${endpoint}?eq[type1]=${option}`;
+      this.getPokemons(filterEndpoint)
     }
   },
   created() {
-    this.getPokemons();
-    this.getTypes()
+    this.getPokemons(endpoint);
+    this.getTypes(typesEndpoint)
   },
 }
 
@@ -49,7 +54,7 @@ export default {
   <div class="container">
     <header>
       <h1 class="text-center my-4 text-success">Pokémon</h1>
-      <SearchForm :options="types" />
+      <SearchForm :options="types" @change-option="fetchFilterType" />
     </header>
     <main>
       <AppMain />
